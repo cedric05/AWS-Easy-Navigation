@@ -1,0 +1,21 @@
+{
+  "name": "aws-easy-navigation",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Chrome extension for easy AWS console navigation",
+  "scripts": {
+    "build": "vite build && node build-script.js",
+    "dev": "vite build --watch && node build-script.js",
+    "preview": "vite preview",
+    "lint": "eslint src/**/*.{ts,svelte}",
+    "format": "prettier --write src/**/*.{ts,svelte}"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@types/chrome": "^0.0.246",
+    "svelte": "^4.2.8",
+    "svelte-preprocess": "^6.0.5",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8"
+  }
+}
