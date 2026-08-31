@@ -18,6 +18,22 @@
   let bookmarkName = '';
   let isAwsPage = false;
 
+  // Preset quick-access bookmarks for common AWS services and regions
+  const presets = [
+    { name: 'Home (us-west-2)', path: '/console/home?region=us-west-2' },
+    { name: 'Home (us-east-1)', path: '/console/home?region=us-east-1' },
+    { name: 'Home (eu-west-1)', path: '/console/home?region=eu-west-1' },
+    { name: 'EC2 Instances', path: '/ec2/v2/home' },
+    { name: 'S3 Buckets', path: '/s3/home' },
+    { name: 'VPC', path: '/vpc/' },
+    { name: 'Route53', path: '/route53/hostedzonesV2/' },
+    { name: 'RDS', path: '/rds/home' },
+    { name: 'Lambda', path: '/lambda/home' },
+    { name: 'DynamoDB', path: '/dynamodbv2/home' },
+    { name: 'CloudFormation', path: '/cloudformation/home' },
+    { name: 'IAM', path: '/iam/home' },
+  ];
+
   onMount(async () => {
     await loadAndRenderBookmarks();
     await checkCurrentTab();
@@ -177,6 +193,21 @@
       </div>
     </div>
   {/if}
+
+  <div class="presets-section">
+    <div class="presets-label">Quick Access</div>
+    <div class="presets-grid">
+      {#each presets as preset (preset.path)}
+        <button
+          class="preset-btn"
+          on:click={() => navigateBookmark(preset.path)}
+          title={preset.path}
+        >
+          {preset.name}
+        </button>
+      {/each}
+    </div>
+  </div>
 
   <div class="bookmarks-list">
     {#if bookmarks.length === 0}
@@ -504,5 +535,55 @@
   .bookmark-count {
     font-size: 12px;
     color: #999;
+  }
+
+  .presets-section {
+    padding: 10px 16px;
+    background: #fafafa;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .presets-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .presets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .preset-btn {
+    padding: 8px 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .preset-btn:hover {
+    background: #ff9900;
+    color: white;
+    border-color: #ff9900;
+    box-shadow: 0 2px 4px rgba(255, 153, 0, 0.2);
+  }
+
+  .preset-btn:active {
+    transform: scale(0.98);
   }
 </style>
