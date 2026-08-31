@@ -20,18 +20,18 @@
 
   // Preset quick-access bookmarks for common AWS services and regions
   const presets = [
-    { name: 'Home (us-west-2)', path: '/console/home?region=us-west-2' },
-    { name: 'Home (us-east-1)', path: '/console/home?region=us-east-1' },
-    { name: 'Home (eu-west-1)', path: '/console/home?region=eu-west-1' },
-    { name: 'EC2 Instances', path: '/ec2/v2/home' },
-    { name: 'S3 Buckets', path: '/s3/home' },
-    { name: 'VPC', path: '/vpc/' },
-    { name: 'Route53', path: '/route53/hostedzonesV2/' },
-    { name: 'RDS', path: '/rds/home' },
-    { name: 'Lambda', path: '/lambda/home' },
-    { name: 'DynamoDB', path: '/dynamodbv2/home' },
-    { name: 'CloudFormation', path: '/cloudformation/home' },
-    { name: 'IAM', path: '/iam/home' },
+    { name: 'Home (us-west-2)', path: '/console/home?region=us-west-2', icon: '🏠' },
+    { name: 'Home (us-east-1)', path: '/console/home?region=us-east-1', icon: '🏠' },
+    { name: 'Home (eu-west-1)', path: '/console/home?region=eu-west-1', icon: '🏠' },
+    { name: 'EC2 Instances', path: '/ec2/v2/home', icon: '🖥️' },
+    { name: 'S3 Buckets', path: '/s3/home', icon: '📦' },
+    { name: 'VPC', path: '/vpc/', icon: '🌐' },
+    { name: 'Route53', path: '/route53/hostedzonesV2/', icon: '🔗' },
+    { name: 'RDS', path: '/rds/home', icon: '🗄️' },
+    { name: 'Lambda', path: '/lambda/home', icon: '⚡' },
+    { name: 'DynamoDB', path: '/dynamodbv2/home', icon: '📊' },
+    { name: 'CloudFormation', path: '/cloudformation/home', icon: '🏗️' },
+    { name: 'IAM', path: '/iam/home', icon: '🔐' },
   ];
 
   onMount(async () => {
@@ -201,9 +201,10 @@
         <button
           class="preset-btn"
           on:click={() => navigateBookmark(preset.path)}
-          title={preset.path}
+          title={`${preset.icon} ${preset.name}`}
         >
-          {preset.name}
+          <span class="preset-icon">{preset.icon}</span>
+          <span class="preset-text">{preset.name}</span>
         </button>
       {/each}
     </div>
@@ -571,9 +572,22 @@
     color: #333;
     transition: all 0.2s ease;
     text-align: center;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    overflow: hidden;
+  }
+
+  .preset-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .preset-text {
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .preset-btn:hover {
