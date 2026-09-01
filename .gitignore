@@ -12,5 +12,10 @@ npm-debug.log*
 .env.*.local
 .svelte-kit/
 
+# Packaged extension artifacts
+*.zip
+*.crx
+*.pem
+
 
 

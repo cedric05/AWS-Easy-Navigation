@@ -6,6 +6,7 @@
   "scripts": {
     "build": "vite build && node build-script.js",
     "dev": "vite build --watch && node build-script.js",
+    "package": "npm run build && cd dist && zip -r -FS ../aws-easy-navigation.zip . -x '*.DS_Store'",
     "preview": "vite preview",
     "lint": "eslint src/**/*.{ts,svelte}",
     "format": "prettier --write src/**/*.{ts,svelte}"
