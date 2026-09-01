@@ -3,6 +3,7 @@
   "name": "AWS Easy Navigation",
   "version": "1.0.0",
   "description": "Quick bookmarks for AWS console paths without relying on URLs with account-specific hostnames",
+  "homepage_url": "https://github.com/cedric05/AWS-Easy-Navigation",
   "permissions": [
     "storage",
     "activeTab",
