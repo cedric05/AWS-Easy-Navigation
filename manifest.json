@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "AWS Easy Navigation",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Quick bookmarks for AWS console paths without relying on URLs with account-specific hostnames",
   "homepage_url": "https://github.com/cedric05/AWS-Easy-Navigation",
   "permissions": [
